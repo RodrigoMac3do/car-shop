@@ -3,7 +3,7 @@ import Motorcycle from '../Domains/Motorcycle';
 // import HttpException from '../Utils/http.exception';
 import IMotorcycle from '../Interfaces/IMotorcycle';
 
-export default class CarService {
+export default class MotorcycleService {
   private model: MotorcycleODM;
 
   constructor() {
