@@ -42,9 +42,11 @@ export default class MotorcycleController {
   public findById = async () => {
     const { id } = this.req.params;
 
-    this.validateObjectId.validate(id);
+    // this.validateObjectId.validate(id);
 
     try {
+      this.validateObjectId.validate(id);
+
       const bike = await this.service.findById(id);
 
       return this.res.status(200).json(bike);
@@ -57,9 +59,11 @@ export default class MotorcycleController {
     const { id } = this.req.params;
     const bike = this.req.body;
 
-    this.validateObjectId.validate(id);
+    // this.validateObjectId.validate(id);
 
     try {
+      this.validateObjectId.validate(id);
+
       const bikeUpdated = await this.service.updateById(id, bike);
 
       return this.res.status(200).json(bikeUpdated);
@@ -71,9 +75,11 @@ export default class MotorcycleController {
   public deleteById = async () => {
     const { id } = this.req.params;
 
-    this.validateObjectId.validate(id);
+    // this.validateObjectId.validate(id);
 
     try {
+      this.validateObjectId.validate(id);
+
       await this.service.deleteById(id);
 
       return this.res.sendStatus(204);
