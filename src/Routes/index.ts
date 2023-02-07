@@ -1,3 +1,3 @@
-import cars from './CarsRoutes';
+import cars from './CarsRoute';
 
 export default { cars };
