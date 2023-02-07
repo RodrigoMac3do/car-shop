@@ -1,6 +1,6 @@
 import MotorcycleODM from '../Models/MotorcycleORM';
 import Motorcycle from '../Domains/Motorcycle';
-import HttpException from '../Utils/http.exception';
+// import HttpException from '../Utils/http.exception';
 import IMotorcycle from '../Interfaces/IMotorcycle';
 
 export default class CarService {
@@ -33,7 +33,8 @@ export default class CarService {
   public findById = async (id: string) => {
     const bike = await this.model.findById(id);
 
-    if (!bike) throw new HttpException(404, 'Motorcycle not found');
+    // if (!bike) throw new HttpException(404, 'Motorcycle not found');
+    if (!bike) throw new Error('Motorcycle not found');
 
     return this.createBikeDomain(bike);
   };
