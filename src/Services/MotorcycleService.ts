@@ -21,4 +21,20 @@ export default class CarService {
 
     return this.createBikeDomain(newCar);
   };
+
+  public findAll = async () => {
+    const bike = await this.model.findAll();
+
+    const cars = bike.map((auto) => this.createBikeDomain(auto));
+
+    return cars;
+  };
+
+  public findById = async (id: string) => {
+    const bike = await this.model.findById(id);
+
+    if (!bike) throw new HttpException(404, 'Motorcycle not found');
+
+    return this.createBikeDomain(bike);
+  };
 }
