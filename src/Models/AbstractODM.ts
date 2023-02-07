@@ -12,19 +12,15 @@ export default abstract class AbstractODM<T> {
     this.model = models[this.modelName] || model(this.modelName, this.schema);
   }
 
-  public create = async (car: ICar): Promise<T> => this.model.create({ ...car });
+  public create = async (car: ICar) => this.model.create({ ...car });
 
-  public findAll = async (): Promise<T[]> => this.model.find();
+  public findAll = async () => this.model.find();
 
-  public findById = async (id: string): Promise<T | null> =>
-    this.model.findById(id);
+  public findById = async (id: string) => this.model.findById(id);
 
-  public updateById = async (
-    id: string,
-    car: ICar,
-  ): Promise<T | null> => {
-    const carUpdated = await this.model.findByIdAndUpdate(id, car);
-
-    return carUpdated;
+  public updateById = async (id: string, car: ICar) => {
+    await this.model.findByIdAndUpdate(id, car);
   };
+
+  public deleteById = async (id: string) => this.model.findByIdAndRemove(id);
 }
