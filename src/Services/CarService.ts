@@ -1,6 +1,7 @@
 import ICar from '../Interfaces/ICar';
 import CarODM from '../Models/CarODM';
 import Car from '../Domains/Car';
+import HttpException from '../Utils/http.exception';
 
 export default class CarService {
   private model: CarODM;
@@ -17,8 +18,23 @@ export default class CarService {
 
   public create = async (car: ICar) => {
     const newCar = await this.model.create(car);
-    console.log(newCar);
 
     return this.createCarDomain(newCar);
+  };
+
+  public findAll = async () => {
+    const car = await this.model.findAll();
+
+    const cars = car.map((auto) => this.createCarDomain(auto));
+
+    return cars;
+  };
+
+  public findById = async (id: string) => {
+    const car = await this.model.findById(id);
+
+    if (!car) throw new HttpException(404, 'Car not found');
+
+    return this.createCarDomain(car);
   };
 }
