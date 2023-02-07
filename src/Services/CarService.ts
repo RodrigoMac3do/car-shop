@@ -45,4 +45,10 @@ export default class CarService {
 
     return this.createCarDomain({ id, ...car });
   };
+
+  public deleteById = async (id: string) => {
+    await this.findById(id);
+
+    await this.model.deleteById(id);
+  };
 }
