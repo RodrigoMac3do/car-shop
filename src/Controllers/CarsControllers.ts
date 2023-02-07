@@ -1,12 +1,14 @@
 import { NextFunction, Request, Response } from 'express';
 import ICar from '../Interfaces/ICar';
 import CarService from '../Services/CarService';
+import ValidateObjectId from '../Utils/ValidateObjectId';
 
 export default class CarsController {
   private req: Request;
   private res: Response;
   private next: NextFunction;
   private service: CarService;
+  private validateObjectId = new ValidateObjectId();
 
   constructor(req: Request, res: Response, next: NextFunction) {
     this.req = req;
@@ -22,6 +24,30 @@ export default class CarsController {
       const newCar = await this.service.create(car);
 
       return this.res.status(201).json(newCar);
+    } catch (error) {
+      this.next(error);
+    }
+  };
+
+  public findAll = async () => {
+    try {
+      const cars = await this.service.findAll();
+
+      return this.res.status(200).json(cars);
+    } catch (error) {
+      this.next(error);
+    }
+  };
+
+  public findById = async () => {
+    const { id } = this.req.params;
+
+    this.validateObjectId.validate(id);
+
+    try {
+      const car = await this.service.findById(id);
+
+      return this.res.status(200).json(car);
     } catch (error) {
       this.next(error);
     }
