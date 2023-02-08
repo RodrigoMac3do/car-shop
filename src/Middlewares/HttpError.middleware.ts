@@ -1,5 +1,5 @@
 import { ErrorRequestHandler } from 'express';
-import HttpException from '../Utils/http.exception';
+import HttpException from '../Utils/HttpException';
 
 export default class HttpError {
   public static handle: ErrorRequestHandler = (err, _req, res, next) => {
