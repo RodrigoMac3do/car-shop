@@ -1,0 +1,169 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Car Shop",
+    "dateExported": "2023-02-21T18:07:05.102Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "4acea84a-7f54-4870-9af9-f64c57118fea",
+            "colId": "a4ab2410-fe0a-422b-9855-e9687b4d0145",
+            "containerId": "",
+            "name": "Inserção de carro",
+            "url": "http://localhost:3001/cars",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-02-06T01:21:11.456Z",
+            "modified": "2023-02-21T18:01:22.168Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"model\": \"Up!\",\n  \"year\": 2020,\n  \"color\": \"White\",\n  \"status\": true,\n  \"buyValue\": 40.999,\n  \"doorsQty\": 4,\n  \"seatsQty\": 5\n}\n  ",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "34b779c6-69c7-4e25-b4ed-a596173ffffa",
+            "colId": "a4ab2410-fe0a-422b-9855-e9687b4d0145",
+            "containerId": "",
+            "name": "Listagem de todos os carros",
+            "url": "http://localhost:3001/cars/",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2023-02-08T16:15:31.852Z",
+            "modified": "2023-02-08T16:18:31.207Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "908478d8-c060-4c89-b8e4-0c63e013a0d9",
+            "colId": "a4ab2410-fe0a-422b-9855-e9687b4d0145",
+            "containerId": "",
+            "name": "Listagem de carro por id",
+            "url": "http://localhost:3001/cars/63e3cb591c0c579075096d1d",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-02-06T23:41:25.217Z",
+            "modified": "2023-02-08T16:18:41.231Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f6f6a69c-e176-4044-a7b3-9950af1a7101",
+            "colId": "a4ab2410-fe0a-422b-9855-e9687b4d0145",
+            "containerId": "",
+            "name": "Atualização de carro pelo id",
+            "url": "http://localhost:3001/cars/63e3cc361c0c579075096d2b",
+            "method": "PUT",
+            "sortNum": 25000,
+            "created": "2023-02-08T16:17:05.433Z",
+            "modified": "2023-02-08T16:22:34.401Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"model\": \"Up!\",\n  \"year\": 2020,\n  \"color\": \"Blue\",\n  \"status\": true,\n  \"buyValue\": 40.999,\n  \"doorsQty\": 4,\n  \"seatsQty\": 5\n}\n  ",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "67088f1d-fba0-4efa-b5b8-bf5ef063d194",
+            "colId": "a4ab2410-fe0a-422b-9855-e9687b4d0145",
+            "containerId": "",
+            "name": "Exclusão de carro por id ",
+            "url": "http://localhost:3001/cars/63e3cb591c0c579075096d1d",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2023-02-07T01:21:17.966Z",
+            "modified": "2023-02-08T16:21:39.734Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "a35cb6a8-8ced-4a8a-9b23-03d80e677736",
+            "colId": "a4ab2410-fe0a-422b-9855-e9687b4d0145",
+            "containerId": "",
+            "name": "Inserção de moto",
+            "url": "http://localhost:3001/motorcycles",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-02-07T19:56:24.777Z",
+            "modified": "2023-02-08T16:27:01.929Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"model\": \"S1000 RR\",\n  \"year\": 2023,\n  \"color\": \"Mineral Grey Metallic\",\n  \"status\": true,\n  \"buyValue\": 120.000,\n  \"category\": \"Superbike\",\n  \"engineCapacity\": 999\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "41ef4f4a-1f66-472f-a290-07a387ad2466",
+            "colId": "a4ab2410-fe0a-422b-9855-e9687b4d0145",
+            "containerId": "",
+            "name": "Listagem de todas as motos",
+            "url": "http://localhost:3001/motorcycles/",
+            "method": "GET",
+            "sortNum": 47500,
+            "created": "2023-02-08T16:23:19.098Z",
+            "modified": "2023-02-08T16:23:19.098Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "d2ab7ff6-905f-4cb4-81d6-a39313886a8d",
+            "colId": "a4ab2410-fe0a-422b-9855-e9687b4d0145",
+            "containerId": "",
+            "name": "Listagem de moto por id",
+            "url": "http://localhost:3001/motorcycles/",
+            "method": "GET",
+            "sortNum": 48750,
+            "created": "2023-02-07T19:56:38.938Z",
+            "modified": "2023-02-08T16:24:19.718Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "f5f23b99-36fe-4835-a200-d9a890cad845",
+            "colId": "a4ab2410-fe0a-422b-9855-e9687b4d0145",
+            "containerId": "",
+            "name": "Atualização de moto por id",
+            "url": "http://localhost:3001/motorcycles/63f506f996df287ce313177d",
+            "method": "PUT",
+            "sortNum": 49375,
+            "created": "2023-02-08T16:24:53.083Z",
+            "modified": "2023-02-21T18:01:46.620Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"model\": \"S1000 RR\",\n  \"year\": 2023,\n  \"color\": \"Motorsport\",\n  \"status\": true,\n  \"buyValue\": 120.000,\n  \"category\": \"Superbike\",\n  \"engineCapacity\": 999\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1f2f6edb-4cca-4126-8256-6b2d34168237",
+            "colId": "a4ab2410-fe0a-422b-9855-e9687b4d0145",
+            "containerId": "",
+            "name": "Exclusão de moto por id",
+            "url": "http://localhost:3001/motorcycles/63e1a7b2ae2cea3d8dcc32b8",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-02-07T19:56:31.856Z",
+            "modified": "2023-02-07T21:08:56.377Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
