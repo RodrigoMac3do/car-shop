@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import ICar from '../Interfaces/ICar';
 import CarService from '../Services/CarService';
+import { carSchema } from '../Services/Validations/Schema';
+import ValidateSchema from '../Services/Validations/ValidateSchema';
 import ValidateObjectId from '../Utils/ValidateObjectId';
 
 export default class CarsController {
@@ -9,6 +11,7 @@ export default class CarsController {
   private next: NextFunction;
   private service: CarService;
   private validateObjectId = new ValidateObjectId();
+  private validateSchema = new ValidateSchema();
 
   constructor(req: Request, res: Response, next: NextFunction) {
     this.req = req;
@@ -19,6 +22,8 @@ export default class CarsController {
 
   public create = async () => {
     const car: ICar = { ...this.req.body };
+
+    await this.validateSchema.validate(carSchema, car);
 
     try {
       const newCar = await this.service.create(car);
@@ -42,8 +47,6 @@ export default class CarsController {
   public findById = async () => {
     const { id } = this.req.params;
 
-    // this.validateObjectId.validate(id);
-
     try {
       this.validateObjectId.validate(id);
       const car = await this.service.findById(id);
@@ -56,9 +59,9 @@ export default class CarsController {
 
   public updateById = async () => {
     const { id } = this.req.params;
-    const car = this.req.body;
+    const car: ICar = this.req.body;
 
-    // this.validateObjectId.validate(id);
+    await this.validateSchema.validate(carSchema, car);
 
     try {
       this.validateObjectId.validate(id);
@@ -73,8 +76,6 @@ export default class CarsController {
 
   public deleteById = async () => {
     const { id } = this.req.params;
-
-    // this.validateObjectId.validate(id);
 
     try {
       this.validateObjectId.validate(id);
