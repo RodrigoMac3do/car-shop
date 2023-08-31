@@ -1,6 +1,8 @@
 import Joi from 'joi';
+import ICar from '../../Interfaces/ICar';
+import IMotorcycle from '../../Interfaces/IMotorcycle';
 
-const carSchema: Joi.Schema = Joi.object({
+const carSchema: Joi.Schema = Joi.object<ICar>({
   id: Joi.string(),
   model: Joi.string().required(),
   year: Joi.number().required(),
@@ -9,9 +11,9 @@ const carSchema: Joi.Schema = Joi.object({
   buyValue: Joi.number().required(),
   doorsQty: Joi.number().required(),
   seatsQty: Joi.number().required(),
-});
+}).strict(true);
 
-const motorcycleSchema: Joi.Schema = Joi.object({
+const motorcycleSchema: Joi.Schema = Joi.object<IMotorcycle>({
   id: Joi.string(),
   model: Joi.string().required(),
   year: Joi.number().required(),
@@ -20,6 +22,6 @@ const motorcycleSchema: Joi.Schema = Joi.object({
   buyValue: Joi.number().required(),
   category: Joi.string().required(),
   engineCapacity: Joi.number().required(),
-});
+}).strict(true);
 
 export { carSchema, motorcycleSchema };
