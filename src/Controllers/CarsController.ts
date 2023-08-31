@@ -1,23 +1,26 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
 import ICar from '../Interfaces/ICar';
 import CarService from '../Services/CarService';
 import { carSchema } from '../Services/Validations/Schema';
-import ValidateSchema from '../Services/Validations/ValidateSchema';
 import ValidateObjectId from '../Utils/ValidateObjectId';
+import ValidateSchema from '../Services/Validations/ValidateSchema';
 
 export default class CarsController {
   private service: CarService;
   private validateObjectId = new ValidateObjectId();
-  private validateSchema = new ValidateSchema();
 
   constructor() {
     this.service = new CarService();
   }
 
-  public create = async (req: Request, res: Response, next: NextFunction) => {
+  public create: RequestHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     const car: ICar = req.body;
 
-    await this.validateSchema.validate(carSchema, car);
+    ValidateSchema.validate(carSchema, car);
 
     try {
       const newCar = await this.service.create(car);
@@ -28,7 +31,11 @@ export default class CarsController {
     }
   };
 
-  public findAll = async (_req: Request, res: Response, next: NextFunction) => {
+  public findAll: RequestHandler = async (
+    _req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     try {
       const cars = await this.service.findAll();
 
@@ -38,7 +45,11 @@ export default class CarsController {
     }
   };
 
-  public findById = async (req: Request, res: Response, next: NextFunction) => {
+  public findById: RequestHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     const { id } = req.params;
 
     try {
@@ -51,7 +62,7 @@ export default class CarsController {
     }
   };
 
-  public updateById = async (
+  public updateById: RequestHandler = async (
     req: Request,
     res: Response,
     next: NextFunction,
@@ -59,7 +70,7 @@ export default class CarsController {
     const { id } = req.params;
     const car: ICar = req.body;
 
-    await this.validateSchema.validate(carSchema, car);
+    ValidateSchema.validate(carSchema, car);
 
     try {
       this.validateObjectId.validate(id);
@@ -72,7 +83,7 @@ export default class CarsController {
     }
   };
 
-  public deleteById = async (
+  public deleteById: RequestHandler = async (
     req: Request,
     res: Response,
     next: NextFunction,

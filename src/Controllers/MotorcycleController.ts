@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, RequestHandler, Response } from 'express';
 import MotorcycleService from '../Services/MotorcycleService';
 import ValidateObjectId from '../Utils/ValidateObjectId';
 import IMotorcycle from '../Interfaces/IMotorcycle';
@@ -8,16 +8,19 @@ import { motorcycleSchema } from '../Services/Validations/Schema';
 export default class MotorcycleController {
   private service: MotorcycleService;
   private validateObjectId = new ValidateObjectId();
-  private validateSchema = new ValidateSchema();
 
   constructor() {
     this.service = new MotorcycleService();
   }
 
-  public create = async (req: Request, res: Response, next: NextFunction) => {
+  public create: RequestHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     const bike: IMotorcycle = req.body;
 
-    await this.validateSchema.validate(motorcycleSchema, bike);
+    ValidateSchema.validate(motorcycleSchema, bike);
 
     try {
       const newBike = await this.service.create(bike);
@@ -28,7 +31,11 @@ export default class MotorcycleController {
     }
   };
 
-  public findAll = async (_req: Request, res: Response, next: NextFunction) => {
+  public findAll: RequestHandler = async (
+    _req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     try {
       const bikes = await this.service.findAll();
 
@@ -38,7 +45,11 @@ export default class MotorcycleController {
     }
   };
 
-  public findById = async (req: Request, res: Response, next: NextFunction) => {
+  public findById: RequestHandler = async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => {
     const { id } = req.params;
 
     try {
@@ -52,7 +63,7 @@ export default class MotorcycleController {
     }
   };
 
-  public updateById = async (
+  public updateById: RequestHandler = async (
     req: Request,
     res: Response,
     next: NextFunction,
@@ -60,7 +71,7 @@ export default class MotorcycleController {
     const { id } = req.params;
     const bike: IMotorcycle = req.body;
 
-    await this.validateSchema.validate(motorcycleSchema, bike);
+    ValidateSchema.validate(motorcycleSchema, bike);
 
     try {
       this.validateObjectId.validate(id);
@@ -73,7 +84,7 @@ export default class MotorcycleController {
     }
   };
 
-  public deleteById = async (
+  public deleteById: RequestHandler = async (
     req: Request,
     res: Response,
     next: NextFunction,
