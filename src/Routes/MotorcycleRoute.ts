@@ -2,20 +2,16 @@ import { Router } from 'express';
 import MotorcycleController from '../Controllers/MotorcycleController';
 
 const router = Router();
+const controller = new MotorcycleController();
 
-router.post('/', (req, res, next) =>
-  new MotorcycleController(req, res, next).create());
+router.post('/', () => controller.create);
 
-router.get('/', (req, res, next) =>
-  new MotorcycleController(req, res, next).findAll());
+router.get('/', () => controller.findAll);
 
-router.get('/:id', (req, res, next) =>
-  new MotorcycleController(req, res, next).findById());
+router.get('/:id', () => controller.findById);
 
-router.put('/:id', (req, res, next) =>
-  new MotorcycleController(req, res, next).updateById());
+router.put('/:id', () => controller.updateById);
 
-router.delete('/:id', (req, res, next) =>
-  new MotorcycleController(req, res, next).deleteById());
+router.delete('/:id', () => controller.deleteById);
 
 export default router;
