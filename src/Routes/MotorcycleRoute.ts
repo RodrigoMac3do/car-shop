@@ -4,14 +4,14 @@ import MotorcycleController from '../Controllers/MotorcycleController';
 const router = Router();
 const controller = new MotorcycleController();
 
-router.post('/', () => controller.create);
+router.post('/', controller.create);
 
-router.get('/', () => controller.findAll);
+router.get('/', controller.findAll);
 
-router.get('/:id', () => controller.findById);
+router.get('/:id', controller.findById);
 
-router.put('/:id', () => controller.updateById);
+router.put('/:id', controller.updateById);
 
-router.delete('/:id', () => controller.deleteById);
+router.delete('/:id', controller.deleteById);
 
 export default router;

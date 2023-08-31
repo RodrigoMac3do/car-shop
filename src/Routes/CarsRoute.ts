@@ -4,14 +4,14 @@ import CarsController from '../Controllers/CarsController';
 const router = Router();
 const controller = new CarsController();
 
-router.post('/', () => controller.create);
+router.post('/', controller.create);
 
-router.get('/', () => controller.findAll);
+router.get('/', controller.findAll);
 
-router.get('/:id', () => controller.findById);
+router.get('/:id', controller.findById);
 
-router.put('/:id', () => controller.updateById);
+router.put('/:id', controller.updateById);
 
-router.delete('/:id', () => controller.deleteById);
+router.delete('/:id', controller.deleteById);
 
 export default router;
