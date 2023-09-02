@@ -63,25 +63,17 @@ export default class MotorcycleController {
     }
   };
 
-  public updateById: RequestHandler = async (
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ) => {
+  public updateById: RequestHandler = async (req: Request, res: Response) => {
     const { id } = req.params;
     const bike: IMotorcycle = req.body;
 
+    this.validateObjectId.validate(id);
+
     ValidateSchema.validate(motorcycleSchema, bike);
 
-    try {
-      this.validateObjectId.validate(id);
+    const bikeUpdated = await this.service.updateById(id, bike);
 
-      const bikeUpdated = await this.service.updateById(id, bike);
-
-      return res.status(200).json(bikeUpdated);
-    } catch (error) {
-      next(error);
-    }
+    res.status(200).json(bikeUpdated);
   };
 
   public deleteById: RequestHandler = async (

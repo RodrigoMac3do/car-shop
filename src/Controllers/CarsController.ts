@@ -62,25 +62,17 @@ export default class CarsController {
     }
   };
 
-  public updateById: RequestHandler = async (
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ) => {
+  public updateById: RequestHandler = async (req: Request, res: Response) => {
     const { id } = req.params;
     const car: ICar = req.body;
 
+    this.validateObjectId.validate(id);
+
     ValidateSchema.validate(carSchema, car);
 
-    try {
-      this.validateObjectId.validate(id);
+    const carUpdated = await this.service.updateById(id, car);
 
-      const carUpdated = await this.service.updateById(id, car);
-
-      return res.status(200).json(carUpdated);
-    } catch (error) {
-      next(error);
-    }
+    res.status(200).json(carUpdated);
   };
 
   public deleteById: RequestHandler = async (
