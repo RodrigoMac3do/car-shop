@@ -11,6 +11,8 @@ import {
 } from '../../mocks/data';
 
 describe('Testes da CarService', function () {
+  const service = new CarService();
+
   beforeEach(function () {
     sinon.restore();
   });
@@ -18,8 +20,6 @@ describe('Testes da CarService', function () {
   describe('Testes com POST da rota /cars', function () {
     it('Teste de criação de novo carro com sucesso', async function () {
       sinon.stub(mongoose.Model, 'create').resolves(cars[0]);
-
-      const service = new CarService();
 
       const result = await service.create(car);
 
@@ -29,8 +29,6 @@ describe('Testes da CarService', function () {
     it('Teste de criação de novo carro sem status', async function () {
       sinon.stub(mongoose.Model, 'create').resolves(carWithoutStatusOut);
 
-      const service = new CarService();
-
       const result = await service.create(carWithoutStatus);
 
       expect(result).to.be.deep.equal(carWithoutStatusOut);
@@ -38,8 +36,6 @@ describe('Testes da CarService', function () {
 
     it('Teste de criação de noco carro sem propriedade', async function () {
       sinon.stub(mongoose.Model, 'create').resolves(undefined);
-
-      const service = new CarService();
 
       const result = await service.create(carWithoutStatus);
 
@@ -51,8 +47,6 @@ describe('Testes da CarService', function () {
     it('Teste deve retornar lista de carros', async function () {
       sinon.stub(mongoose.Model, 'find').resolves(cars);
 
-      const service = new CarService();
-
       const result = await service.findAll();
 
       expect(result).to.be.deep.equal(cars);
@@ -62,8 +56,6 @@ describe('Testes da CarService', function () {
       sinon.stub(mongoose.Model, 'findById').resolves(null);
 
       try {
-        const service = new CarService();
-
         await service.findById('1');
       } catch (error) {
         expect((error as Error).message).to.be.equal('Car not found');
@@ -76,7 +68,6 @@ describe('Testes da CarService', function () {
       sinon.stub(mongoose.Model, 'findById').resolves(cars[0]);
       sinon.stub(mongoose.Model, 'findByIdAndUpdate').resolves(carUpdate);
 
-      const service = new CarService();
       const result = await service.updateById(
         '63e2aae4135a458473a32730',
         carUpdate,
@@ -93,8 +84,6 @@ describe('Testes da CarService', function () {
     it('Teste se é possível excluir carro com sucesso', async function () {
       sinon.stub(mongoose.Model, 'findById').resolves(cars[0]);
       sinon.stub(mongoose.Model, 'findByIdAndRemove').resolves(null);
-
-      const service = new CarService();
 
       const result = await service.deleteById('63e2aae4135a458473a32730');
 
