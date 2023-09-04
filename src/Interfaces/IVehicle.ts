@@ -3,6 +3,6 @@ export default interface IVehicle {
   model: string;
   year: number;
   color: string;
-  status?: boolean | undefined;
+  status?: boolean;
   buyValue: number;
 }
