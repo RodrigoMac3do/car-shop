@@ -1,4 +1,4 @@
-import MotorcycleODM from '../Models/MotorcycleORM';
+import MotorcycleODM from '../Models/MotorcycleODM';
 import Motorcycle from '../Domains/Motorcycle';
 import IMotorcycle from '../Interfaces/IMotorcycle';
 import HttpException from '../Utils/HttpException';
