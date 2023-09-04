@@ -13,15 +13,15 @@ export default abstract class AbstractODM<T> {
     this.model = models[this.modelName] || model(this.modelName, this.schema);
   }
 
-  public create = async (auto: ICar | IMotorcycle) => this.model.create({ ...auto });
+  public create = async (auto: ICar | IMotorcycle) =>
+    this.model.create({ ...auto });
 
   public findAll = async () => this.model.find();
 
   public findById = async (id: string) => this.model.findById(id);
 
-  public updateById = async (id: string, auto: ICar | IMotorcycle) => {
-    await this.model.findByIdAndUpdate(id, auto);
-  };
+  public updateById = async (id: string, auto: ICar | IMotorcycle) =>
+    this.model.findByIdAndUpdate(id, auto);
 
   public deleteById = async (id: string) => this.model.findByIdAndRemove(id);
 }
