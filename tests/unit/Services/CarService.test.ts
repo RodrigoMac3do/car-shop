@@ -52,7 +52,7 @@ describe('Testes da CarService', function () {
       expect(result).to.be.deep.equal(cars);
     });
 
-    it('Teste de falha ao passar ID inválidoo', async function () {
+    it('Teste de falha ao passar ID inválido', async function () {
       sinon.stub(mongoose.Model, 'findById').resolves(null);
 
       try {
