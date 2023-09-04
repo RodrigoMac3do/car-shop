@@ -1,6 +1,8 @@
 import ICar from '../../src/Interfaces/ICar';
 import IMotorcycle from '../../src/Interfaces/IMotorcycle';
 
+const invalidMongoId = 'Invalid mongo id';
+
 const colorBike = 'Mineral Grey Metallic';
 
 const car: ICar = {
@@ -35,6 +37,16 @@ const cars: ICar[] = [
     seatsQty: 5,
   },
 ];
+
+const carUpdate: ICar = {
+  model: 'Uno',
+  year: 2002,
+  color: 'Red',
+  status: true,
+  buyValue: 3500,
+  doorsQty: 2,
+  seatsQty: 5,
+};
 
 const carWithoutStatus: ICar = {
   model: 'Up!',
@@ -109,13 +121,26 @@ const motorcycleWithoutStatusOut: IMotorcycle = {
   engineCapacity: 999,
 };
 
+const motorcycleUpdate = {
+  model: 'Honda CG Titan 160',
+  year: 2020,
+  color: 'Black',
+  status: true,
+  buyValue: 8.2,
+  category: 'Street',
+  engineCapacity: 160,
+};
+
 export {
+  invalidMongoId,
   car,
   cars,
   carWithoutStatus,
   carWithoutStatusOut,
+  carUpdate,
   motorcycle,
   motorcycles,
   motorcycleWithoutStatus,
   motorcycleWithoutStatusOut,
+  motorcycleUpdate,
 };
