@@ -1,4 +1,4 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
+import { Request, RequestHandler, Response } from 'express';
 import MotorcycleService from '../Services/MotorcycleService';
 import ValidateObjectId from '../Utils/ValidateObjectId';
 import IMotorcycle from '../Interfaces/IMotorcycle';
@@ -13,54 +13,30 @@ export default class MotorcycleController {
     this.service = new MotorcycleService();
   }
 
-  public create: RequestHandler = async (
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ) => {
+  public create: RequestHandler = async (req: Request, res: Response) => {
     const bike: IMotorcycle = req.body;
 
     ValidateSchema.validate(motorcycleSchema, bike);
 
-    try {
-      const newBike = await this.service.create(bike);
+    const newBike = await this.service.create(bike);
 
-      return res.status(201).json(newBike);
-    } catch (error) {
-      next(error);
-    }
+    res.status(201).json(newBike);
   };
 
-  public findAll: RequestHandler = async (
-    _req: Request,
-    res: Response,
-    next: NextFunction,
-  ) => {
-    try {
-      const bikes = await this.service.findAll();
+  public findAll: RequestHandler = async (_req: Request, res: Response) => {
+    const bikes = await this.service.findAll();
 
-      return res.status(200).json(bikes);
-    } catch (error) {
-      next(error);
-    }
+    res.status(200).json(bikes);
   };
 
-  public findById: RequestHandler = async (
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ) => {
+  public findById: RequestHandler = async (req: Request, res: Response) => {
     const { id } = req.params;
 
-    try {
-      this.validateObjectId.validate(id);
+    this.validateObjectId.validate(id);
 
-      const bike = await this.service.findById(id);
+    const bike = await this.service.findById(id);
 
-      return res.status(200).json(bike);
-    } catch (error) {
-      next(error);
-    }
+    res.status(200).json(bike);
   };
 
   public updateById: RequestHandler = async (req: Request, res: Response) => {
@@ -76,21 +52,13 @@ export default class MotorcycleController {
     res.status(200).json(bikeUpdated);
   };
 
-  public deleteById: RequestHandler = async (
-    req: Request,
-    res: Response,
-    next: NextFunction,
-  ) => {
+  public deleteById: RequestHandler = async (req: Request, res: Response) => {
     const { id } = req.params;
 
-    try {
-      this.validateObjectId.validate(id);
+    this.validateObjectId.validate(id);
 
-      await this.service.deleteById(id);
+    await this.service.deleteById(id);
 
-      return res.sendStatus(204);
-    } catch (error) {
-      next(error);
-    }
+    res.sendStatus(204);
   };
 }
