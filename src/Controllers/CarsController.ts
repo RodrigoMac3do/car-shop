@@ -1,9 +1,9 @@
 import { Request, RequestHandler, Response } from 'express';
 import ICar from '../Interfaces/ICar';
 import CarService from '../Services/CarService';
-import { carSchema } from '../Services/Validations/Schema';
+import { carSchema } from '../helpers/Schema';
 import ValidateObjectId from '../Utils/ValidateObjectId';
-import ValidateSchema from '../Services/Validations/ValidateSchema';
+import ValidateSchema from '../helpers/ValidateSchema';
 
 export default class CarsController {
   private service: CarService;

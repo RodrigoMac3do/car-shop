@@ -2,8 +2,8 @@ import { Request, RequestHandler, Response } from 'express';
 import MotorcycleService from '../Services/MotorcycleService';
 import ValidateObjectId from '../Utils/ValidateObjectId';
 import IMotorcycle from '../Interfaces/IMotorcycle';
-import ValidateSchema from '../Services/Validations/ValidateSchema';
-import { motorcycleSchema } from '../Services/Validations/Schema';
+import ValidateSchema from '../helpers/ValidateSchema';
+import { motorcycleSchema } from '../helpers/Schema';
 
 export default class MotorcycleController {
   private service: MotorcycleService;
