@@ -8,7 +8,7 @@ import {
   motorcycleUpdate,
   motorcycleWithoutStatus,
   motorcycleWithoutStatusOut,
-} from '../../mocks/data';
+} from '../../mocks/motorcycle.mock';
 
 describe('Testes da MotorcycleService', function () {
   const service = new MotorcycleService();
