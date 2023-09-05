@@ -8,7 +8,7 @@ import {
   carUpdate,
   carWithoutStatus,
   carWithoutStatusOut,
-} from '../../mocks/data';
+} from '../../mocks/cars.mock';
 
 describe('Testes da CarService', function () {
   const service = new CarService();

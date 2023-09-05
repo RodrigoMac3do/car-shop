@@ -3,9 +3,11 @@ import sinon from 'sinon';
 import mongoose from 'mongoose';
 import request = require('supertest');
 import app from '../../src/app';
-import { car, carUpdate, cars, invalidMongoId } from '../mocks/data';
+import { car, carUpdate, cars } from '../mocks/cars.mock';
 
 describe('Car', function () {
+  const invalidMongoId = 'Invalid mongo id';
+
   beforeEach(function () {
     sinon.restore();
   });

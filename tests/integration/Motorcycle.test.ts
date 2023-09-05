@@ -7,10 +7,11 @@ import {
   motorcycle,
   motorcycleUpdate,
   motorcycles,
-  invalidMongoId,
-} from '../mocks/data';
+} from '../mocks/motorcycle.mock';
 
 describe('Motorcycle', function () {
+  const invalidMongoId = 'Invalid mongo id';
+
   beforeEach(function () {
     sinon.restore();
   });
