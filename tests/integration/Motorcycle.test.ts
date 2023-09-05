@@ -16,7 +16,7 @@ describe('Motorcycle', function () {
   });
 
   describe('GET /motorcycles', function () {
-    it('Deve retornar todos os carros', async function () {
+    it('Deve retornar todas as motos', async function () {
       sinon.stub(mongoose.Model, 'find').resolves(motorcycles);
 
       const res = await request(app).get('/motorcycles');
@@ -25,7 +25,7 @@ describe('Motorcycle', function () {
       expect(res.body).to.be.an('array');
     });
 
-    it('Deve retornar um carro', async function () {
+    it('Deve retornar uma moto', async function () {
       sinon.stub(mongoose.Model, 'findById').resolves(motorcycles[0]);
 
       const res = await request(app).get(`/motorcycles/${motorcycles[0].id}`);
@@ -34,7 +34,7 @@ describe('Motorcycle', function () {
       expect(res.body.id).to.not.deep.equal(motorcycles[1].id);
     });
 
-    it('Deve retornar status 404 quando não encontrar carro', async function () {
+    it('Deve retornar status 404 quando não encontrar uma moto', async function () {
       sinon.stub(mongoose.Model, 'findById').resolves(null);
 
       const res = await request(app).get(`/motorcycles/${motorcycles[0].id}`);
@@ -54,7 +54,7 @@ describe('Motorcycle', function () {
   });
 
   describe('POST /motorcycles', function () {
-    it('Deve criar um carro', async function () {
+    it('Deve criar uma moto', async function () {
       sinon.stub(mongoose.Model, 'create').resolves(motorcycle);
 
       const res = await request(app).post('/motorcycles').send(motorcycle);
@@ -65,7 +65,7 @@ describe('Motorcycle', function () {
   });
 
   describe('PUT /motorcycles/:id', function () {
-    it('Deve atualizar um carro', async function () {
+    it('Deve atualizar uma moto', async function () {
       sinon.stub(mongoose.Model, 'findById').resolves(motorcycles[0]);
       sinon
         .stub(mongoose.Model, 'findByIdAndUpdate')
@@ -82,7 +82,7 @@ describe('Motorcycle', function () {
       });
     });
 
-    it('Deve retornar 404 quando o carro não for encontrado', async function () {
+    it('Deve retornar 404 quando a moto não for encontrada', async function () {
       sinon.stub(mongoose.Model, 'findById').resolves(null);
       sinon.stub(mongoose.Model, 'findByIdAndUpdate').resolves(null);
 
@@ -103,7 +103,7 @@ describe('Motorcycle', function () {
   });
 
   describe('DELETE /motorcycles/:id', function () {
-    it('Deve retornar 404 quando o carro não for encontrado', async function () {
+    it('Deve retornar 404 quando a moto não for encontrada', async function () {
       sinon.stub(mongoose.Model, 'findById').resolves(motorcycles[0]);
       sinon.stub(mongoose.Model, 'findByIdAndRemove').resolves(null);
 
