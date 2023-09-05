@@ -8,7 +8,15 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "test": "jest -i --verbose",
     "test:mocha": "mocha -r ts-node/register tests/**/**/*.test.ts --exit -t 60000",
-    "test:coverage": "nyc mocha -r ts-node/register tests/**/**/*.test.ts --exit -t 60000"
+    "test:integration": "mocha -r ts-node/register tests/integration/*.test.ts --exit -t 60000",
+    "test:model": "mocha -r ts-node/register 'tests/**/Models/*.test.ts' --exit -t 60000",
+    "test:service": "mocha -r ts-node/register 'tests/**/Services/*.test.ts' --exit -t 60000",
+    "test:controller": "mocha -r ts-node/register 'tests/**/Controllers/*.test.ts' --exit -t 60000",
+    "test:coverage:model": "nyc mocha -r ts-node/register 'tests/**/Models/*.test.ts' --exit -t 60000",
+    "test:coverage:service": "nyc mocha -r ts-node/register 'tests/**/Services/*.test.ts' --exit -t 60000",
+    "test:coverage:controller": "nyc mocha -r ts-node/register 'tests/**/Controllers/*.test.ts' --exit -t 60000",
+    "test:coverage": "nyc mocha -r ts-node/register tests/**/**/*.test.ts --exit -t 60000",
+    "test:all": "nyc mocha -r ts-node/register 'tests/**/*.test.ts' 'tests/integration/*.test.ts' --exit -t 60000"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "1.0.2",
